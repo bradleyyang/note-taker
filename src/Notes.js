@@ -1,9 +1,27 @@
+import React, { useState } from 'react';
+import NoteList from './NoteList';
+import NoteForm from './NoteForm';
+
 const Notes = () => {
+    const [notes, setNotes] = useState([]);
+
+    const addNote = (newNote) => {
+        if (!newNote) return;
+        setNotes([...notes, newNote]);
+    };
+
     return (
         <>
-            <h1>
-                Notes go here
-            </h1>
+            <div className="w-screen h-screen bg-gray-800 flex text-black flex-col">
+                <div>
+                    <NoteForm addNote={addNote} />
+                </div>
+                <div>
+                    <NoteList notes={notes} />
+                </div>
+                
+                
+            </div>
         </>
     )
 }
